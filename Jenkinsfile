@@ -1,6 +1,3 @@
-#!groovy
-def version = "1.0." + env.BUILD_NUMBER + (env.BRANCH_NAME=="master");
-def versionVSIX = "1.0." + env.BUILD_NUMBER;
 
 node{
 
