@@ -9,7 +9,7 @@ node{
 			checkout scm
 				
 			stage 'nuget restore'
-			bat 'C:\\Program Files (x86)\\NuGet\\Visual Studio 2015\\nuget.exe" TestConsoleAppliaction.sln'
+			bat '"C:\\Program Files (x86)\\NuGet\\Visual Studio 2015\\nuget.exe" TestConsoleAppliaction.sln'
 			
 			stage 'build x64 TestConsoleAppliaction'
 			bat "\"${msbuild}\" /t:Clean,Build /p:Platform=x64 TestConsoleAppliaction.sln"
