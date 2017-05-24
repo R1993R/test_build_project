@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="TestSetupPorject" Language="1033" Version="1.0.0.0" Manufacturer="-_-" UpgradeCode="3875b0be-c199-44a7-8eed-3f0aa96e4237">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+      <Directory Id="TARGETDIR" Name="SourceDir">
+        <Directory Id="ProgramFilesFolder">
+          <Directory Id="INSTALLFOLDER" Name="TestSetupPorject" />
+        </Directory>
+      </Directory>
+
+    <Feature Id="ProductFeature" Title="TestSetupPorject" Level="1">
+      <ComponentRef Id="TestComponent" />
+    </Feature>
+
+    <UIRef Id="WixUI_Minimal"/>
+    <Property Id="REINSTALLMODE" Value="amus"/>
+
+  </Product>
+
+  <Fragment>
+    <DirectoryRef Id="INSTALLFOLDER" DiskId="1"></DirectoryRef>
+  </Fragment>
+
+  <Fragment>
+    <Component Id="TestComponent" Directory="INSTALLFOLDER" Guid="55B9FF8A-9A37-4461-80BD-7C54053508A1" KeyPath="yes">
+      
+      <File Id="TestConsoleApplication" Source="..\..\TestConsoleAppliaction\TestClassLibrary\bin\Debug\TestClassLibrary.dll"/>
+      <File Id="TestClassLibrary" Source="..\..\TestConsoleAppliaction\TestConsoleAppliaction\bin\Debug\TestConsoleAppliaction.exe"/>
+
+      <RemoveFolder Id="RemoveTestFolder" Directory="INSTALLFOLDER" On="uninstall"/>
+    </Component>
+  </Fragment>
+
+</Wix>
