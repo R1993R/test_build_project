@@ -7,8 +7,6 @@ node{
 	try {
 			stage 'checkout'
 			checkout scm
-				
-			def msbuild = tool 'Main';
 			
 			stage 'build x64 TestConsoleAppliaction'
 			bat "\"${msbuild}\" /t:Clean,Build /p:Platform=x64 TestConsoleAppliaction.sln"
